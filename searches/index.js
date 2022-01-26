@@ -20,10 +20,11 @@ app.get('/chat', async (req, res) => {
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createSearch("davinci", {
-        documents: ["White House", "hospital", "school"],
-        query: "the president",
+        documents: ["Caballo", "Manzana", "Miguel Angel", "Universo"],
+        query: "Fruta",
     });
-    console.log(openaiKey);
+    //score above 200 usually means the document is semantically similar to the query
+    res.send(response.data);
 });
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
